@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   	
+    <title>로또뽑기</title>
+    <style>
+        #result{
+        	margin: 0 auto;
+			width: 100%;
+			height: 100px;
+			background: skyblue;
+			text-align: center;
+        }
+        .numbers{
+        	width: 80px;
+        	height: 80px;
+        	line-height: 75px;
+        	margin: 10px;
+        	font-size: 40px;
+        	font-weight: bold;
+        	border-radius: 50%;
+        	display: inline-block;
+        	background: yellow;
+        	color: black;
+        }
+    </style>
+</head>
+<body>
+    <h2>대박을 기원합니다~~</h2>
+    <div id='result'></div>
+    
+    <script>
+    var LottoNum = [];
+	while(LottoNum.length < 6){
+		var tmp = Math.floor(Math.random()*45+1);
+		if(LottoNum.indexOf(tmp) == -1){
+			LottoNum.push(tmp);
+		}
+	}
+	LottoNum = LottoNum.sort(function(p,c){return p-c;})
+	console.log(LottoNum);
+
+    var result = document.querySelector('#result');
+
+    function makelotto(num,result){
+        var elem = document.createElement('div');
+        	
+      		elem.textContent = num;
+    	    elem.className = 'numbers';
+   	  		result.appendChild(elem);
+    }
+    
+    setTimeout(function callback(){
+        makelotto(LottoNum[0],result);
+    },1000);
+    setTimeout(function callback(){
+        makelotto(LottoNum[1],result);},2000);
+    setTimeout(function callback(){
+        makelotto(LottoNum[2],result);},3000);
+    setTimeout(function callback(){
+        makelotto(LottoNum[3],result);},4000);
+    setTimeout(function callback(){
+    	makelotto(LottoNum[4],result);},5000);
+    setTimeout(function callback(){
+    	makelotto(LottoNum[5],result);},6000);
+    
+    </script>
+</body>
+</html>
